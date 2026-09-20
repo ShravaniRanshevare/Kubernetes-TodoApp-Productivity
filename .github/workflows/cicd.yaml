@@ -44,3 +44,20 @@ jobs:
       - name: Push frontend image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/todoapp-frontend:${{ github.sha }}
 
+      - name: Set up kubectl
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/backend \
+            backend-pod=shravrocks/todoapp-backend:${{ github.sha }} \
+            -n todoapp
+
+          kubectl set image deployment/frontend \
+            frontend-pods=shravrocks/todoapp-frontend:${{ github.sha }}\
+            -n todoapp
+
+          kubectl rollout status deployment/backend -n todoapp
+          kubectl rollout status deployment/frontend -n todoapp
