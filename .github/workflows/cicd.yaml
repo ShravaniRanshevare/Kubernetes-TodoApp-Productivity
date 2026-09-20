@@ -28,7 +28,7 @@ jobs:
         run: |
           docker build \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/todoapp-backend:${{ github.sha }} \
-            ./TodoAppNew
+            ./
 
       # --- Frontend ---
       - name: Build frontend image
