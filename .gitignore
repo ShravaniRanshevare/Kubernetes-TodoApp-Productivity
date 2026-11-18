@@ -1,7 +1,7 @@
 # =========================
 # Secrets
 # =========================
-postgres-secret.yaml
+k8s/postgres-secret.yaml
 *.secret.yaml
 secrets.yaml
 .env
