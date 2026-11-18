@@ -1,275 +1,357 @@
-**Kubernetes TodoApp Productivity**
+# 🚀 Kubernetes TodoApp Productivity
 
-A cloud-native full-stack productivity application built with FastAPI, React, PostgreSQL, Docker, Kubernetes, and Helm. The project demonstrates modern software engineering practices including containerization, orchestration, infrastructure automation, CI/CD, database management, and scalable cloud deployment.
+A cloud-native full-stack productivity application built using **React**, **FastAPI**, **PostgreSQL**, **Docker**, **Kubernetes**, and **Helm**.
 
-**🚀 Features**
-Task Management
-Create tasks
-Update task details
-Mark tasks as completed
-Delete tasks
-Persistent data storage using PostgreSQL
-RESTful API architecture
+The project demonstrates modern software engineering practices including full-stack development, containerisation, database persistence, Kubernetes orchestration, Helm chart deployment, CI/CD automation, scalability, and cloud-native application delivery.
 
-**Productivity Features**
-Real-time task tracking
-Task status management
-Responsive user interface
-Persistent storage across application restarts
-Scalable backend services
+---
 
-**Backend**
-FastAPI REST API
-SQLAlchemy ORM
-Alembic database migrations
-PostgreSQL integration
-Environment-based configuration
-Dockerized deployment
+## 📖 Overview
 
-**Frontend**
-React + Vite
-Modern component-based architecture
-Axios API communication
-Responsive design
-Containerized deployment
+Kubernetes TodoApp Productivity is a task management application that allows users to create, manage, update, and track tasks through a responsive web interface.
 
-**Kubernetes**
-Namespace isolation
-Deployments
-Services
-Secrets management
-Horizontal Pod Autoscaling (HPA)
-Ingress configuration
-TLS certificates
-Self-signed certificate issuer
+### Built With
 
-**Helm**
-Helm chart packaging
-Templated Kubernetes manifests
-Configurable deployments
-Environment-specific values
-Simplified application rollout
+- **React + Vite** for the frontend
+- **FastAPI** for the backend API
+- **PostgreSQL** for persistent storage
+- **Docker** for containerisation
+- **Kubernetes** for orchestration
+- **Helm** for deployment management
+- **GitHub Actions** for CI/CD
 
-**DevOps**
-Docker image builds
-Docker Hub integration
-GitHub Actions CI pipeline
-Automated testing and build validation
-Infrastructure as Code (IaC)
+---
 
-**🏗 System Architecture**
-Plain Text
-┌───────────────┐
-│ React UI │
-│ Frontend │
-└───────┬───────┘
-│
-▼
-┌───────────────┐
-│ Ingress │
-└───────┬───────┘
-│
-▼
-┌───────────────┐
-│ FastAPI │
-│ Backend │
-└───────┬───────┘
-│
-▼
-┌───────────────┐
-│ PostgreSQL DB │
-└───────────────┘
+## ✨ Features
 
-**🛠 Technology Stack**
-*Frontend*
-React
-Vite
-JavaScript
-Axios
+### ✅ Task Management
 
-*Backend*
-FastAPI
-Python
-SQLAlchemy
-Alembic
-Uvicorn
+- Create tasks
+- View tasks
+- Update tasks
+- Delete tasks
+- Mark tasks as completed
+- Persistent PostgreSQL storage
 
-*Database*
-PostgreSQL
+### 🎨 Frontend Features
 
-*Containerization*
-Docker
-Docker Compose
+- React-based UI
+- Responsive design
+- API integration using Axios
+- Fast Vite development environment
 
-*Orchestration*
-Kubernetes
-Helm
+### 🔗 Backend Features
 
-*CI/CD*
-GitHub Actions
+- FastAPI REST API
+- SQLAlchemy ORM
+- PostgreSQL integration
+- Alembic database migrations
+- Environment-based configuration
+- Dockerised deployment
 
-**📂 Project Structure**
+### ☸️ Kubernetes Features
+
+- Deployments
+- Services
+- Secrets
+- Namespace isolation
+- Ingress configuration
+- TLS certificate support
+- Horizontal Pod Autoscaler (HPA)
+- Rolling updates
+
+### 📦 Helm Features
+
+- Helm chart packaging
+- Templated Kubernetes manifests
+- Configurable deployments
+- Upgrade and rollback support
+- Reusable deployment configuration
+
+### 🔄 CI/CD Features
+
+- GitHub Actions workflows
+- Automated builds
+- Docker image creation
+- Docker Hub integration
+- Continuous Integration pipeline
+
+---
+
+## 🏗️ Architecture
+
+```text
+┌─────────────────────┐
+│    React Frontend   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Kubernetes Ingress  │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   FastAPI Backend   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│    PostgreSQL DB    │
+└─────────────────────┘
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- Axios
+
+### Backend
+
+- Python
+- FastAPI
+- SQLAlchemy
+- Alembic
+- Uvicorn
+
+### Database
+
+- PostgreSQL
+
+### Containerisation
+
+- Docker
+- Docker Compose
+
+### Orchestration
+
+- Kubernetes
+- Helm
+
+### DevOps
+
+- GitHub Actions
+- Docker Hub
+
+---
+
+## 📂 Project Structure
+
+```text
 .
 ├── frontend/
-│ ├── src/
-│ ├── public/
-│ └── Dockerfile
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── Dockerfile
 │
 ├── TodoApp/
-│ ├── routers/
-│ ├── alembic/
-│ ├── models/
-│ ├── database/
-│ └── Dockerfile
+│   ├── alembic/
+│   ├── routers/
+│   ├── models/
+│   ├── database/
+│   ├── requirements.txt
+│   └── Dockerfile
 │
 ├── k8s/
-│ ├── todoapp/
-│ │ ├── templates/
-│ │ ├── values.yaml
-│ │ └── Chart.yaml
-│ │
-│ └── kind-ingress.yaml
+│   ├── kind-ingress.yaml
+│   └── todoapp/
+│       ├── Chart.yaml
+│       ├── values.yaml
+│       └── templates/
 │
-├── .github/workflows/
+├── .github/
+│   └── workflows/
 │
-|___ . README.md
+└── README.md
+```
 
+---
 
-**🐳 Docker Deployment**
+## 🐳 Docker Deployment
 
-Build backend image:
+### Build Backend
 
+```bash
 docker build -t todoapp-backend ./TodoApp
+```
 
-Build frontend image:
+### Build Frontend
 
+```bash
 docker build -t todoapp-frontend ./frontend
+```
 
-Run containers:
+### Run Using Docker Compose
 
+```bash
 docker compose up -d
+```
 
-**☸️ Kubernetes Deployment**
+---
 
-Create namespace:
+## ☸️ Kubernetes Deployment
 
+### Create Namespace
+
+```bash
 kubectl create namespace todoapp
+```
 
-Deploy using Helm:
+### Deploy Using Helm
 
+```bash
 helm install todoapp ./k8s/todoapp -n todoapp
+```
 
-Verify deployment:
+### Verify Deployment
 
+```bash
 kubectl get all -n todoapp
+```
 
-Upgrade deployment:
+### Upgrade Deployment
 
+```bash
 helm upgrade todoapp ./k8s/todoapp -n todoapp
+```
 
-Uninstall:
+### Remove Deployment
 
+```bash
 helm uninstall todoapp -n todoapp
+```
 
-**🔒 Security**
+---
 
-The project implements:
+## 🔒 Security
 
-Kubernetes Secrets for sensitive credentials
-Environment variable configuration
-TLS-ready ingress configuration
-Certificate management through Kubernetes
-Namespace isolation
-Containerized service separation
+- Kubernetes Secrets for database credentials
+- Environment variable configuration
+- Namespace isolation
+- TLS-ready ingress configuration
+- Certificate management
+- Separation of infrastructure and application configuration
 
-Sensitive files such as database credentials are excluded from source control using .gitignore.
+Sensitive files are excluded from source control using `.gitignore`.
 
-**📈 Scalability**
+---
 
-The application supports horizontal scaling through Kubernetes:
+## 📈 Scalability
 
+The application supports Kubernetes scaling features including:
+
+- Horizontal Pod Autoscaling (HPA)
+- Rolling updates
+- Service discovery
+- High availability deployment patterns
+- Container orchestration
+
+Check autoscaling:
+
+```bash
 kubectl get hpa -n todoapp
+```
 
-Features include:
+---
 
-Horizontal Pod Autoscaling
-Stateless backend deployment
-Service discovery
-Container orchestration
-Rolling updates
-✅ CI/CD Pipeline
+## 🔄 Database Migrations
 
-GitHub Actions provides:
+### Create Migration
 
-Source validation
-Automated builds
-Docker image creation
-Container registry publishing
-Continuous integration workflows
+```bash
+alembic revision --autogenerate -m "migration_name"
+```
 
-Pipeline stages:
+### Apply Migration
 
-Code Push
-↓
-GitHub Actions
-↓
-Build
-↓
-Test
-↓
-Docker Image Creation
-↓
-Container Registry
- 
-🔄 Database Migrations
-
-Create migration:
-
-alembic revision --autogenerate -m "New Migration"
-
-Apply migration:
-
+```bash
 alembic upgrade head
+```
 
-Rollback migration:
+### Rollback Migration
 
+```bash
 alembic downgrade -1
+```
 
+---
 
-**🎯 Learning Outcomes**
+## 🚦 CI/CD Pipeline
 
-This project demonstrates practical experience with:
+```text
+Developer Push
+       │
+       ▼
+ GitHub Actions
+       │
+       ▼
+ Automated Validation
+       │
+       ▼
+ Docker Image Build
+       │
+       ▼
+ Docker Hub Push
+```
 
-Full-stack web development
-REST API design
-Database modelling
-PostgreSQL administration
-Docker containerization
-Kubernetes orchestration
-Helm packaging
-DevOps workflows
-CI/CD automation
-Cloud-native architecture
-Infrastructure as Code (IaC)
+### Pipeline Features
 
-**👩‍💻 Author**
+- Automated validation
+- Source code checks
+- Docker image creation
+- Docker Hub publishing
+- Continuous Integration workflow
 
-Shravani Ranshevare
+---
 
-BSc Computer Science Student
- University of Hertfordshire
+## 🎓 Learning Outcomes
+
+This project demonstrates practical experience in:
+
+- Full-Stack Development
+- REST API Design
+- PostgreSQL Database Management
+- Docker Containerisation
+- Kubernetes Orchestration
+- Helm Chart Development
+- GitHub Actions CI/CD
+- Infrastructure as Code (IaC)
+- DevOps Engineering
+- Cloud-Native Application Development
+
+---
+
+## 🚀 Future Enhancements
+
+- User authentication
+- JWT security
+- Task priorities
+- Task categories
+- Due dates and reminders
+- Email notifications
+- Prometheus monitoring
+- Grafana dashboards
+- Cloud deployment (AKS, EKS or GKE)
+- Automated Kubernetes deployment pipeline
+
+---
+
+## 👩‍💻 Author
+
+**Shravani Ranshevare**
+
+BSc Computer Science Student  
+University of Hertfordshire
 
 GitHub: https://github.com/ShravaniRanshevare
 
-**Future Enhancements**
-User authentication and authorization
-JWT security integration
-Task categories and priorities
-Due dates and reminders
-Analytics dashboard
-Prometheus monitoring
-Grafana dashboards
-Production cloud deployment (AKS/EKS/GKE)
-Automated Kubernetes deployment via GitHub Actions
+---
 
-⭐ If you found this project interesting, consider starring the repository.
+⭐ If you found this project useful, consider starring the repository.
