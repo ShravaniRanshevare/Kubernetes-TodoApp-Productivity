@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: backend-config
-  namespace: todoapp
+  namespace: todoapp-2
 data:
   POSTGRES_driver: "postgresql+psycopg2"
   POSTGRES_NAME: "TodoApplicationDatabase"

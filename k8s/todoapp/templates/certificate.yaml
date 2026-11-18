@@ -2,13 +2,13 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: todoapp-cert
-  namespace: todoapp
+  namespace: todoapp-2
 spec:
   secretName: todoapp-tls
   duration: 2160h        # 90 days
   renewBefore: 360h      # 15 days
   issuerRef:
-    name: selfsigned-issuer
+    name: todoapp-2-issuer
     kind: ClusterIssuer
   dnsNames:
     - todoapp.local

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 1
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
       app: backend
@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: backend-pod
-          image: shravrocks/todo-backend:${{github.sha}}
+          image: "{{ .Values.backend.image.repository}}:{{ .Values.backend.image.tag}}"
           imagePullPolicy: Always
           ports:
-            - containerPort: 8000
+            - containerPort: {{ .Values.backend.port }}
           env:
             - name: POSTGRES_driver
               valueFrom:
@@ -62,21 +62,21 @@ spec:
                   key: JWT_SECRET
           livenessProbe:
             httpGet:
-              path: /health
-              port: 8000
+              path: {{ .Values.backend.probes.liveness.path }}
+              port: {{ .Values.backend.probes.liveness.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /health
-              port: 8000
+              path: {{ .Values.backend.probes.readiness.path }}
+              port: {{ .Values.backend.probes.readiness.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: {{ .Values.backend.resources.requests.cpu }}
+              memory: {{ .Values.backend.resources.requests.memory }}
             limits:
-              cpu: "300m"
-              memory: "256Mi"
+              cpu: {{ .Values.backend.resources.limits.cpu }}
+              memory: {{ .Values.backend.resources.limits.memory }}
 

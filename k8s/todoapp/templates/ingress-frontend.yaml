@@ -2,17 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: todo-ingress
-  namespace: todoapp
+  namespace: todoapp-2
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-issuer.yaml 
+    cert-manager.io/cluster-issuer: todoapp-2-issuer
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - todoapp.local
+        - {{ .Values.ingress.host }}
       secretName: todoapp-tls
   rules:
-    - host: todoapp.local
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /
@@ -21,4 +21,4 @@ spec:
               service:
                 name: frontend-svc
                 port:
-                  number: 5173
+                  number: {{ .Values.ingress.frontendPort }}

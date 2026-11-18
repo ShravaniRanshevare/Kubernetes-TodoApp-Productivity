@@ -2,10 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-svc
+  namespace: todoapp-2
 spec:
   selector:
     app: backend
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: {{ .Values.backend.servicePort }}
+      targetPort: {{ .Values.backend.port }}
   type: ClusterIP

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
-  replicas: 1
+  replicas: {{ .Values.frontend.replicas }}
   selector:
     matchLabels:
       app: frontend
@@ -14,23 +14,23 @@ spec:
     spec:
       containers:
         - name: frontend-pods
-          image: shravrocks/todo-frontend:${{github.sha}}
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
           imagePullPolicy: Always
           ports:
-            - containerPort: 5173
+            - containerPort: {{ .Values.frontend.port }}
           env:
             - name: BACKEND_URL
               value: "http://backend-svc.default.svc.cluster.local:8000"
           livenessProbe:
             httpGet:
-              path: /
-              port: 5173
+              path: {{ .Values.frontend.probes.liveness.path }}
+              port: {{ .Values.frontend.probes.liveness.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /
-              port : 5173
+              path: {{ .Values.frontend.probes.readiness.path }}
+              port: {{ .Values.frontend.probes.readiness.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
